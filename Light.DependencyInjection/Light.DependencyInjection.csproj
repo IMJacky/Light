@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Light.Business\Light.Business.csproj" />
+    <ProjectReference Include="..\Light.IBusiness\Light.IBusiness.csproj" />
+    <ProjectReference Include="..\Light.IRepository\Light.IRepository.csproj" />
+    <ProjectReference Include="..\Light.Repository\Light.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

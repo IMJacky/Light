@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Light.IBusiness\Light.IBusiness.csproj" />
+    <ProjectReference Include="..\Light.IRepository\Light.IRepository.csproj" />
+    <ProjectReference Include="..\Light.Model\Light.Model.csproj" />
+  </ItemGroup>
+
+</Project>
