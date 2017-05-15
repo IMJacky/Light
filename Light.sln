@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26430.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Light.Model", "Light.Model\Light.Model.csproj", "{462B8C9E-AA11-465B-B9F7-F11BE74D6366}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Light.Api", "Light.Api\Light.Api.csproj", "{C9D675B9-49BF-4503-8DF0-D9ABDDA980BD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Light.Repository", "Light.Repository\Light.Repository.csproj", "{669E6EC0-74EB-4420-8008-F7C39D6950ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Light.Common", "Light.Common\Light.Common.csproj", "{098ED45A-7938-49E0-A6D9-303E60D5A252}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{669E6EC0-74EB-4420-8008-F7C39D6950ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{669E6EC0-74EB-4420-8008-F7C39D6950ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{669E6EC0-74EB-4420-8008-F7C39D6950ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{098ED45A-7938-49E0-A6D9-303E60D5A252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{098ED45A-7938-49E0-A6D9-303E60D5A252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{098ED45A-7938-49E0-A6D9-303E60D5A252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{098ED45A-7938-49E0-A6D9-303E60D5A252}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

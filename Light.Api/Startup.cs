@@ -8,11 +8,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Light.DependencyInjection;
+using Light.Repository;
 
 namespace Light.Api
 {
+    /// <summary>
+    /// 项目启动类
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="env"></param>
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -23,6 +31,9 @@ namespace Light.Api
             Configuration = builder.Build();
         }
 
+        /// <summary>
+        /// 配置类
+        /// </summary>
         public IConfigurationRoot Configuration { get; }
 
         /// <summary>
@@ -31,8 +42,10 @@ namespace Light.Api
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            DataBaseConfig.DefaultSqlConnectionString = Configuration.GetConnectionString("SqlServerConnection");
             RepositoryInjection.ConfigureRepository(services);
             BusinessInjection.ConfigureBusiness(services);
+
             services.AddMvc();
             services.AddSwaggerGen();
         }
@@ -47,7 +60,6 @@ namespace Light.Api
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUi();
