@@ -9,7 +9,7 @@ namespace Light.Repository
     /// <summary>
     /// 数据库配置
     /// </summary>
-    public class DataBaseConfig
+    public static class DataBaseConfig
     {
         #region SqlServer链接配置
         /// <summary>

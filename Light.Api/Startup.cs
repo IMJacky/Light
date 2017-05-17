@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Light.DependencyInjection;
 using Light.Repository;
+using Light.Repository.MySQL;
 
 namespace Light.Api
 {
@@ -43,6 +44,7 @@ namespace Light.Api
         public void ConfigureServices(IServiceCollection services)
         {
             DataBaseConfig.DefaultSqlConnectionString = Configuration.GetConnectionString("SqlServerConnection");
+            MySQLDataBaseConfig.DefaultMySqlConnectionString = Configuration.GetConnectionString("MySqlConnection");
             RepositoryInjection.ConfigureRepository(services);
             BusinessInjection.ConfigureBusiness(services);
 
