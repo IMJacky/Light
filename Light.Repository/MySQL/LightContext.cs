@@ -17,5 +17,15 @@ namespace Light.Repository.MySQL
         }
 
         public DbSet<User> User { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>(m =>
+            {
+                m.Property(n => n.UserName).HasMaxLength(50);//设置用户名最大长度为50个字符
+                m.Property(n => n.Password).HasColumnType("nvarchar");//设置密码的数据库类型为nvarchar
+            });
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

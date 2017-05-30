@@ -28,8 +28,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Light.DependencyInjection\Light.DependencyInjection.csproj" />
-    <ProjectReference Include="..\Light.IBusiness\Light.IBusiness.csproj" />
-    <ProjectReference Include="..\Light.Model\Light.Model.csproj" />
   </ItemGroup>
 
 </Project>

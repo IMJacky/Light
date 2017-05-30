@@ -12,6 +12,7 @@ namespace Light.DependencyInjection
     {
         public static void ConfigureRepository(IServiceCollection services)
         {
+            //services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IUserRepository, UserRepositoryMySql>();
         }
     }

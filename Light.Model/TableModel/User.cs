@@ -26,5 +26,10 @@ namespace Light.Model.TableModel
         /// 出生年月日
         /// </summary>
         public DateTime Birthday { get; set; }
+
+        ///// <summary>
+        ///// 邮件地址
+        ///// </summary>
+        //public string Email { get; set; }
     }
 }

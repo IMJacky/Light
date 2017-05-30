@@ -6,6 +6,9 @@ using Light.Model.TableModel;
 
 namespace Light.Repository.MySQL
 {
+    /// <summary>
+    /// MySql中的用户仓储实现
+    /// </summary>
     public class UserRepositoryMySql : IUserRepository
     {
         /// <summary>

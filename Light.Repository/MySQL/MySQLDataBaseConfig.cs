@@ -3,7 +3,6 @@ using MySQL.Data.EntityFrameworkCore.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace Light.Repository.MySQL
 {
     /// <summary>
@@ -14,7 +13,7 @@ namespace Light.Repository.MySQL
         /// <summary>
         /// 默认的Sql Server的链接字符串
         /// </summary>
-        public static string DefaultMySqlConnectionString;
+        private const string DefaultMySqlConnectionString = "server=localhost;userid=root;pwd=sasa;port=3306;database=light;";
         public static LightContext CreateContext(string mySqlConnectionString = null)
         {
             if (string.IsNullOrWhiteSpace(mySqlConnectionString))
