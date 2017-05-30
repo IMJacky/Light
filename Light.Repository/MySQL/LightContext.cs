@@ -23,7 +23,7 @@ namespace Light.Repository.MySQL
             modelBuilder.Entity<User>(m =>
             {
                 m.Property(n => n.UserName).HasMaxLength(50);//设置用户名最大长度为50个字符
-                m.Property(n => n.Password).HasColumnType("nvarchar");//设置密码的数据库类型为nvarchar
+                m.Property(n => n.Password).HasMaxLength(20).IsRequired();//设置密码不可空且最大20个字符
             });
             base.OnModelCreating(modelBuilder);
         }
