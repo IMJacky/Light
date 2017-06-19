@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Light.Model.TableModel
 {
@@ -26,6 +27,11 @@ namespace Light.Model.TableModel
         /// 出生年月日
         /// </summary>
         public DateTime Birthday { get; set; }
+
+        /// <summary>
+        /// 一个用户隶属于多个角色
+        /// </summary>
+        public ICollection<Role> RoleList { get; set; }
 
         ///// <summary>
         ///// 邮件地址

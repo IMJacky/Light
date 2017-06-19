@@ -21,6 +21,7 @@ namespace Light.Repository.MySQL
                 mySqlConnectionString = DefaultMySqlConnectionString;
             }
             var optionBuilder = new DbContextOptionsBuilder<LightContext>();
+            //var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
             optionBuilder.UseMySQL(mySqlConnectionString);
             var context = new LightContext(optionBuilder.Options);
             context.Database.EnsureCreated();
