@@ -31,7 +31,7 @@ namespace Light.Model.TableModel
         /// <summary>
         /// 一个用户隶属于多个角色
         /// </summary>
-        public ICollection<Role> RoleList { get; set; }
+        //public ICollection<Role> RoleList { get; set; }
 
         ///// <summary>
         ///// 邮件地址

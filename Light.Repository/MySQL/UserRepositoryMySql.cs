@@ -27,6 +27,21 @@ namespace Light.Repository.MySQL
         }
 
         /// <summary>
+        /// 批量添加实体
+        /// </summary>
+        /// <param name="entityList">要创建的实体</param>
+        /// <param name="connectionString">链接字符串</param>
+        /// <returns></returns>
+        public bool CreateEntityList(IEnumerable<User> entityList, string connectionString = null)
+        {
+            using (LightContext context = MySQLDataBaseConfig.CreateContext(connectionString))
+            {
+                context.User.AddRange(entityList);
+                return context.SaveChanges() > 0;
+            }
+        }
+
+        /// <summary>
         /// 根据主键Id删除一个用户
         /// </summary>
         /// <param name="id">主键Id</param>

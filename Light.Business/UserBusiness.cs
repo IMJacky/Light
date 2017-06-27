@@ -29,6 +29,17 @@ namespace Light.Business
         }
 
         /// <summary>
+        /// 批量添加实体
+        /// </summary>
+        /// <param name="entityList">要创建的实体</param>
+        /// <param name="connectionString">链接字符串</param>
+        /// <returns></returns>
+        public bool CreateEntityList(IEnumerable<User> entityList, string connectionString = null)
+        {
+            return iUserRepository.CreateEntityList(entityList, connectionString);
+        }
+
+        /// <summary>
         /// 根据主键Id删除一个用户
         /// </summary>
         /// <param name="id">主键Id</param>

@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Light.IBusiness;
 using Light.Model.TableModel;
+using System;
+using System.Linq;
 
 namespace Light.Api.Controllers
 {
@@ -29,7 +31,7 @@ namespace Light.Api.Controllers
         //[Route("AllUser")]
         public IEnumerable<User> GetAllUser()
         {
-            return iUserBusiness.RetriveAllEntity();
+            return iUserBusiness.RetriveAllEntity().OrderBy(m => m.Id);
         }
 
         /// <summary>
@@ -51,6 +53,25 @@ namespace Light.Api.Controllers
         [HttpPost]
         public bool CreateUser([FromBody]User user)
         {
+            //List<User> userList = new List<User>();
+            //for (int i = 0; i < 5000; i++)
+            //{
+            //    userList.Add(new User
+            //    {
+            //        Birthday = DateTime.Now,
+            //        CreateDate = DateTime.Now,
+            //        CreateUserId = 1000,
+            //        Gender = false,
+            //        IsDeleted = false,
+            //        Password = i.ToString(),
+            //        UpdateDate = DateTime.Now,
+            //        UpdateUserId = 1000,
+            //        UserName = i.ToString()
+            //    });
+            //}
+
+            //iUserBusiness.CreateEntityList(userList);
+
             return iUserBusiness.CreateEntity(user);
         }
 

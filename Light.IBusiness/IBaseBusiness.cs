@@ -17,6 +17,14 @@ namespace Light.IBusiness
         bool CreateEntity(T entity, string connectionString = null);
 
         /// <summary>
+        /// 批量添加实体
+        /// </summary>
+        /// <param name="entityList">要创建的实体</param>
+        /// <param name="connectionString">链接字符串</param>
+        /// <returns></returns>
+        bool CreateEntityList(IEnumerable<T> entityList, string connectionString = null);
+
+        /// <summary>
         /// 根据主键Id获取一个实体
         /// </summary>
         /// <param name="id">主键Id</param>

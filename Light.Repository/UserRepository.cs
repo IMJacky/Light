@@ -5,6 +5,9 @@ using System.Data;
 using Dapper;
 using System.Threading.Tasks;
 using Light.Model.TableModel;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
 
 namespace Light.Repository
 {
@@ -45,6 +48,40 @@ namespace Light.Repository
                                            ,@UpdateDate
                                            ,@IsDeleted)";
                 return conn.Execute(insertSql, entity) > 0;
+            }
+        }
+
+        /// <summary>
+        /// 批量添加实体
+        /// </summary>
+        /// <param name="entityList">要创建的实体</param>
+        /// <param name="connectionString">链接字符串</param>
+        /// <returns></returns>
+        public bool CreateEntityList(IEnumerable<User> entityList, string connectionString = null)
+        {
+            using (IDbConnection conn = DataBaseConfig.GetSqlConnection(connectionString))
+            {
+                string insertSql = @"INSERT INTO [dbo].[User]
+                                           ([UserName]
+                                           ,[Password]
+                                           ,[Gender]
+                                           ,[Birthday]
+                                           ,[CreateUserId]
+                                           ,[CreateDate]
+                                           ,[UpdateUserId]
+                                           ,[UpdateDate]
+                                           ,[IsDeleted])
+                                     VALUES
+                                           (@UserName
+                                           ,@Password
+                                           ,@Gender
+                                           ,@Birthday
+                                           ,@CreateUserId
+                                           ,@CreateDate
+                                           ,@UpdateUserId
+                                           ,@UpdateDate
+                                           ,@IsDeleted)";
+                return conn.Execute(insertSql, entityList) > 0;
             }
         }
 
