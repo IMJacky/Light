@@ -4,6 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Light.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
+using System.IO;
+using System.Reflection;
+using Microsoft.Extensions.PlatformAbstractions;
 
 namespace Light.Api
 {
@@ -47,14 +51,24 @@ namespace Light.Api
         public void ConfigureServices(IServiceCollection services)
         {
             //string defaultSqlConnectionString = Configuration.GetConnectionString("SqlServerConnection");
-            string defaultMySqlConnectionString = Configuration.GetConnectionString("MySqlConnection");
+            //string defaultMySqlConnectionString = Configuration.GetConnectionString("MySqlConnection");
 
             RepositoryInjection.ConfigureRepository(services);
             BusinessInjection.ConfigureBusiness(services);
             services.AddMvc();
             services.AddSwaggerGen(m =>
             {
-                m.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "LightApi", Version = "v1", Description = "Light接口文档" });
+                m.SwaggerDoc("v1", new Info
+                {
+                    Description = "Light System WebApi",
+                    Contact = new Contact { Email = "871834898@qq.com", Name = "王杰光", Url = "http://www.jiqunar.com" },
+                    Version = "v1",
+                    Title = "LightAPI"
+                });
+                var basePath = PlatformServices.Default.Application.ApplicationBasePath;//或者AppContext.BaseDirectory
+                var xmlName = this.GetType().GetTypeInfo().Module.Name.Replace(".dll", ".xml").Replace(".exe", ".xml");
+                var xmlPath = Path.Combine(basePath, xmlName);
+                m.IncludeXmlComments(xmlPath);
             });
         }
 

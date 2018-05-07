@@ -18,7 +18,11 @@ namespace Light.Api
         {
             BuildWebHost(args).Run();
         }
-
+        /// <summary>
+        /// 构建WebHost
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
             .UseStartup<Startup>()
