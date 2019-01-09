@@ -1,0 +1,16 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/auth/role/all",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 57994
+        }
+      ],
+      "UpstreamPathTemplate": "/woca",
+      "UpstreamHttpMethod": [ "Get" ]
+    }
+  ]
+}

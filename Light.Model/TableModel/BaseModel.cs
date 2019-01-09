@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace Light.Model.TableModel
 {
@@ -10,12 +13,20 @@ namespace Light.Model.TableModel
         /// <summary>
         /// 主键Id
         /// </summary>
-        public int Id { get; set; }
+        [Key]
+        public long Id { get; set; }
 
         /// <summary>
-        /// 创建人
+        /// 创建人Id
         /// </summary>
-        public int CreateUserId { get; set; }
+        public long CreaterId { get; set; }
+
+        /// <summary>
+        /// 创建人姓名
+        /// </summary>
+        [StringLength(20)]
+        [Required]
+        public string CreaterName { get; set; }
 
         /// <summary>
         /// 创建时间
@@ -23,9 +34,16 @@ namespace Light.Model.TableModel
         public DateTime CreateDate { get; set; }
 
         /// <summary>
-        /// 更新人
+        /// 更新人Id
         /// </summary>
-        public int UpdateUserId { get; set; }
+        public long UpdaterId { get; set; }
+
+        /// <summary>
+        /// 更新人姓名
+        /// </summary>
+        [StringLength(20)]
+        [Required]
+        public string UpdaterName { get; set; }
 
         /// <summary>
         /// 更新时间

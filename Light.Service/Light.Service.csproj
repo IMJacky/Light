@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Light.Common\Light.Common.csproj" />
+    <ProjectReference Include="..\Light.EFRespository\Light.EFRespository.csproj" />
+    <ProjectReference Include="..\Light.IService\Light.IService.csproj" />
+  </ItemGroup>
+
+</Project>
