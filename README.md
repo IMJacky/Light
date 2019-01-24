@@ -7,8 +7,8 @@
 
 # NLog日志配置
 和appsettings.json的连接字符串保持一致即可：
-```"LightLogConnectionMySql": "Server=localhost;DataBase=LightLog;User=root;password=Wjg50058;"```
-```<target name="log4database" xsi:type="Database" dbProvider="MySql.Data.MySqlClient.MySqlConnection, MySql.Data">
+```
+<target name="log4database" xsi:type="Database" dbProvider="MySql.Data.MySqlClient.MySqlConnection, MySql.Data">
   <connectionString>
 	Server=localhost;DataBase=LightLog;User=root;password=Wjg50058
   </connectionString>
@@ -20,4 +20,5 @@
   <parameter name="@createDate" layout="${date}" />
   <parameter name="@level" layout="${level}" />
   <parameter name="@message" layout="${message}" />
-</target>```
+</target>
+```
