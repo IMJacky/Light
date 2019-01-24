@@ -14,3 +14,9 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
 </PropertyGroup>
+4、Mysql8.0m密码模式修改四部曲
+mysql -u root -p
+use mysql
+alter user 'root'@'localhost' identified by 'your pwd' password expire never
+alter user 'root'@'localhost' identified with mysql_native_password by 'your pwd'
+flush privileges
