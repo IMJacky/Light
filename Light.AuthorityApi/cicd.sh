@@ -1,7 +1,6 @@
 cd /home/ubuntu/wjg/project/light
 unzip -o Light.AuthorityApi.zip -d Light.AuthorityApi
-sudo rm -rf *.zip
-cd /home/ubuntu/wjg/project/light/Light.AuthorityApi
+cd Light.AuthorityApi
 touch Dockerfile
 echo "FROM microsoft/dotnet" >> Dockerfile
 echo "WORKDIR /app" >> Dockerfile
@@ -15,5 +14,6 @@ sudo docker rm $(sudo docker ps -a -q --filter=ancestor=light.authorityapi)
 sudo docker rmi light.authorityapi
 sudo docker build -t light.authorityapi .
 sudo docker run -p 5000:5000 -d --name light.authorityapi light.authorityapi
-cd /home/ubuntu/wjg/project/light
+cd -
+sudo rm -rf *.zip
 sudo rm -rf Light.AuthorityApi
