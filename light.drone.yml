@@ -1,5 +1,0 @@
-pipeline:
-  backend:
-    image: dotnet
-    commands:
-      - dotnet restore
