@@ -2,4 +2,4 @@ pipeline:
   backend:
     image: dotnet
     commands:
-      - dotnet build
+      - dotnet restore
