@@ -137,8 +137,7 @@ namespace Light.AuthorityApi.Controllers.Single
             //{
             //    list.Add(i);
             //});
-            var aaa = RuntimeHelper.EnvironmentName;
-            return Ok(roles);
+            return Ok(RuntimeHelper.EnvironmentName);
         }
         #endregion
     }
