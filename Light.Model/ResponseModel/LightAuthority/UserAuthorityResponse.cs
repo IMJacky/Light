@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Light.Model.ViewModel.LightAuthority
+namespace Light.Model.ResponseModel.LightAuthority
 {
     /// <summary>
     /// 用户权限详情
     /// </summary>
-    public class UserAuthorityDetail
+    public class UserAuthorityResponse
     {
         /// <summary>
         /// 用户Id

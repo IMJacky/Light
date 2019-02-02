@@ -2,12 +2,13 @@
 using Light.EFRespository;
 using Light.EFRespository.LightAuthority;
 using Light.IService.LightAuthority;
+using Light.Model.EnumModel;
 using Light.Model.CommonModel;
 using Light.Model.TableModel.LightAuthority;
-using Light.Model.ViewModel.LightAuthority;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Light.Model.ResponseModel.LightAuthority;
 
 namespace Light.Service.Authority
 {
@@ -28,14 +29,14 @@ namespace Light.Service.Authority
         /// </summary>
         /// <param name="userId">用户Id</param>
         /// <returns></returns>
-        public async Task<ResultModel<UserAuthorityDetail>> GetUserAuthorityDetail(int userId)
+        public async Task<ResultModel<UserAuthorityResponse>> GetUserAuthorityDetail(int userId)
         {
             var roleRepository = _unitOfWork.GetRepository<Role>();
             var applicationUserRepository = _unitOfWork.GetRepository<ApplicationUser>();
             var userRoleRepository = _unitOfWork.GetRepository<UserRole>();
             var moduleSystemRepository = _unitOfWork.GetRepository<ModuleSystem>();
             var roleModuleRepository = _unitOfWork.GetRepository<RoleModule>();
-            ResultModel<UserAuthorityDetail> resultModel = new ResultModel<UserAuthorityDetail>();
+            ResultModel<UserAuthorityResponse> resultModel = new ResultModel<UserAuthorityResponse>();
             var user = await applicationUserRepository.GetSingleAsync(m => new { m.Id, m.UserName, m.CreateDate }, m => m.Id == userId);
             if (user != null)
             {

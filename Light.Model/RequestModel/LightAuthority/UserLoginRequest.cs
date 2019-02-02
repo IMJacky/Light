@@ -2,18 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Light.Model.ViewModel.LightAuthority
+namespace Light.Model.RequestModel.LightAuthority
 {
     /// <summary>
-    /// 用户显示实体
+    /// 登录请求实体
     /// </summary>
-    public class ApplicationUserView
+    public class UserLoginRequest
     {
-        /// <summary>
-        /// 用户Id
-        /// </summary>
-        public long Id { get; set; }
-
         /// <summary>
         /// 用户名
         /// </summary>
@@ -23,10 +18,5 @@ namespace Light.Model.ViewModel.LightAuthority
         /// 密码
         /// </summary>
         public string Password { get; set; }
-
-        /// <summary>
-        /// 邮件地址
-        /// </summary>
-        public string Email { get; set; }
     }
 }

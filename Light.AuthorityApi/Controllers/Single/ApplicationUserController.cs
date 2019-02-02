@@ -10,6 +10,9 @@ using Light.Model.RequestModel.LightAuthority;
 using Light.Common;
 using Light.EFRespository.LightAuthority;
 using Microsoft.AspNetCore.Authorization;
+using Light.Model.EnumModel;
+using Light.Model.ResponseModel.LightAuthority;
+using AutoMapper;
 
 namespace Light.AuthorityApi.Controllers.Single
 {
@@ -21,13 +24,16 @@ namespace Light.AuthorityApi.Controllers.Single
     public class ApplicationUserController : BaseController
     {
         private readonly IUnitOfWork<LightAuthorityContext> _unitOfWork;
+        private readonly IMapper _mapper;
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="unitOfWork"></param>
-        public ApplicationUserController(IUnitOfWork<LightAuthorityContext> unitOfWork)
+        /// <param name="mapper"></param>
+        public ApplicationUserController(IUnitOfWork<LightAuthorityContext> unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         #region ApplicationUser
@@ -37,10 +43,9 @@ namespace Light.AuthorityApi.Controllers.Single
         /// <returns></returns>
         //[HttpGet("all/{d:int:range(1,3)}")]
         [HttpGet("all")]
-        [Authorize]
         public async Task<IActionResult> GetAllUser()
         {
-            return Ok(await _unitOfWork.GetRepository<ApplicationUser>().GetListAsyncCurrent());
+            return Ok(await _unitOfWork.GetRepository<ApplicationUser>().GetListAsync(m => _mapper.Map<ApplicationUser, ApplicationUserResponse>(m)));
         }
 
         /// <summary>
@@ -50,7 +55,7 @@ namespace Light.AuthorityApi.Controllers.Single
         [HttpGet("page")]
         public async Task<IActionResult> GetAllUserByPage(PageRequest pageRequest)
         {
-            return Ok(await _unitOfWork.GetRepository<ApplicationUser>().GetPagedListAsyncCurrent(pageIndex: pageRequest.PageIndex, pageSize: pageRequest.PageSize));
+            return Ok(await _unitOfWork.GetRepository<ApplicationUser>().GetPagedListAsync(m => _mapper.Map<ApplicationUser, ApplicationUserResponse>(m), pageIndex: pageRequest.PageIndex, pageSize: pageRequest.PageSize));
         }
 
         /// <summary>
@@ -121,7 +126,7 @@ namespace Light.AuthorityApi.Controllers.Single
         /// <param name="userLogin"></param>
         /// <returns></returns>
         [HttpPost("login")]
-        public async Task<IActionResult> UserLogin([FromBody]UserLoginModel userLogin)
+        public async Task<IActionResult> UserLogin([FromBody]UserLoginRequest userLogin)
         {
             ResultModel<ApplicationUser> result = new ResultModel<ApplicationUser> { Message = MessageEnum.UserMessageEnum.UserNameOrPasswordError.GetDescription() };
             var userExist = await _unitOfWork.GetRepository<ApplicationUser>().GetSingleAsyncCurrent(m => m.UserName == userLogin.UserName && m.Password == userLogin.Password);

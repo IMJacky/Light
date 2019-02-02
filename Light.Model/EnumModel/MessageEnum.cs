@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace Light.Model.CommonModel
+namespace Light.Model.EnumModel
 {
     /// <summary>
     /// 消息类型枚举

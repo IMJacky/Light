@@ -10,6 +10,7 @@
     <DocumentationFile>bin\Debug\$(TargetFramework)\$(MSBuildProjectName).xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
     <PackageReference Include="EasyNetQ" Version="3.3.9" />
   </ItemGroup>

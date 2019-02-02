@@ -20,6 +20,8 @@ using Light.EFRespository.LightAuthority;
 using Light.EFRespository.LightLog;
 using Light.Common;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
+using Light.Model;
 
 namespace Light.AuthorityApi
 {
@@ -157,6 +159,10 @@ namespace Light.AuthorityApi
             });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddAutoMapper(m =>
+            {
+                m.AddProfile<ModelMappingProfile>();
+            });
         }
 
         /// <summary>

@@ -1,5 +1,5 @@
 ﻿using Light.Model.CommonModel;
-using Light.Model.ViewModel.LightAuthority;
+using Light.Model.ResponseModel.LightAuthority;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,6 +17,6 @@ namespace Light.IService.LightAuthority
         /// </summary>
         /// <param name="userId">用户Id</param>
         /// <returns></returns>
-        Task<ResultModel<UserAuthorityDetail>> GetUserAuthorityDetail(int userId);
+        Task<ResultModel<UserAuthorityResponse>> GetUserAuthorityDetail(int userId);
     }
 }

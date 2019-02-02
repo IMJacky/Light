@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Light.Extension;
 using Light.IService.LightAuthority;
 using Light.Model.CommonModel;
-using Light.Model.ViewModel.LightAuthority;
+using Light.Model.ResponseModel.LightAuthority;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
