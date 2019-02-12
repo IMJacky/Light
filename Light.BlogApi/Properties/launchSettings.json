@@ -1,9 +1,10 @@
 ﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
   "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
+    "windowsAuthentication": false, 
+    "anonymousAuthentication": true, 
     "iisExpress": {
-      "applicationUrl": "http://localhost:5000",
+      "applicationUrl": "http://localhost:5002",
       "sslPort": 0
     }
   },
@@ -11,17 +12,19 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "blog/main",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Litght.ApiGateway": {
+    "Light.BlogApi": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "blog/main",
+      "applicationUrl": "http://localhost:41128",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:65257"
+      }
     }
   }
 }

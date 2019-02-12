@@ -18,6 +18,7 @@ namespace Light.Model
         public ModelMappingProfile()
         {
             CreateMap<ApplicationUser, ApplicationUserResponse>();
+            CreateMap<ApplicationUserResponse, ApplicationUser>();
         }
     }
 }

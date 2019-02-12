@@ -1,16 +1,28 @@
 {
   "ReRoutes": [
     {
-      "DownstreamPathTemplate": "/auth/role/all",
+      "DownstreamPathTemplate": "/auth/{controller}/{action}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 57994
+          "Host": "10.154.5.185",
+          "Port": 5001
         }
       ],
-      "UpstreamPathTemplate": "/woca",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamPathTemplate": "/auth/{controller}/{action}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/blog/{controller}/{action}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.154.5.185",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/blog/{controller}/{action}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
     }
   ]
 }
