@@ -39,13 +39,13 @@ echo "ENV ASPNETCORE_ENVIRONMENT Production" >> Dockerfile
 echo "ENTRYPOINT [\"dotnet\", \"Light.AuthorityApi.dll\"]" >> Dockerfile
 
 echo '8、stop container light.authorityapi'
-sudo docker stop $(sudo docker ps -a -q  --filter=ancestor=light.authorityapi)
+sudo docker stop $(sudo docker ps -a -q  --filter=ancestor=light.authorityapi) || :
 
 echo '9、delete container light.authorityapi'
-sudo docker rm $(sudo docker ps -a -q --filter=ancestor=light.authorityapi)
+sudo docker rm $(sudo docker ps -a -q --filter=ancestor=light.authorityapi) || :
 
 echo '10、delete image light.authorityapi'
-sudo docker rmi light.authorityapi
+sudo docker rmi light.authorityapi || :
 
 echo '11、build image light.authorityapi'
 sudo docker build -t light.authorityapi .
