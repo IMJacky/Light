@@ -15,7 +15,7 @@ namespace Light.AuthorityApi.Controllers.Multi
     /// 用户权限相关控制器
     /// </summary>
     [Produces("application/json")]
-    [Route("auth")]
+    [Route("auth/detail")]
     public class AuthorityController : BaseController
     {
         private readonly IAuthorityService iAuthorityService;
