@@ -30,7 +30,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Light.Service", "Light.Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Light.EFRespository", "Light.EFRespository\Light.EFRespository.csproj", "{426D006A-9579-4646-8C4B-81177DB1F24D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Light.ApiGateway", "ApiGateway\Light.ApiGateway.csproj", "{ED1602F8-4E48-4EFB-BA5E-372C41494649}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Light.ApiGateway", "Light.ApiGateway\Light.ApiGateway.csproj", "{ED1602F8-4E48-4EFB-BA5E-372C41494649}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Light.IdentityServer", "Light.IdentityServer\Light.IdentityServer.csproj", "{B2CE496A-A646-4BB8-A1DE-9D1630BB58CC}"
 EndProject
