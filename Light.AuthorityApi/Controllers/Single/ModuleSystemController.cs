@@ -35,7 +35,6 @@ namespace Light.AuthorityApi.Controllers.Single
         /// </summary>
         /// <returns></returns>
         [HttpGet("all")]
-        [Authorize]
         public async Task<IActionResult> GetAllModuleSystem()
         {
             return Ok(await _unitOfWork.GetRepository<ModuleSystem>().GetListAsyncCurrent());

@@ -37,7 +37,6 @@ namespace Light.AuthorityApi.Controllers.Single
         /// </summary>
         /// <returns></returns>
         [HttpGet("all")]
-        //[Authorize]
         public async Task<IActionResult> GetAllRole()
         {
             return Ok(await _unitOfWork.GetRepository<Role>().GetListAsyncCurrent());

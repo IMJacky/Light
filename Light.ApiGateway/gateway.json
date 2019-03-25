@@ -5,24 +5,34 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "10.154.5.185",
+          "Host": "localhost",
           "Port": 5001
         }
       ],
       "UpstreamPathTemplate": "/auth/{controller}/{action}",
-      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ],
+      //下游API服务需要授权后才能访问
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthProviderKey",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/blog/{controller}/{action}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "10.154.5.185",
+          "Host": "localhost",
           "Port": 5002
         }
       ],
       "UpstreamPathTemplate": "/blog/{controller}/{action}",
-      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ],
+      //下游API服务需要授权后才能访问
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "AuthProviderKey",
+        "AllowedScopes": []
+      }
     }
   ]
 }

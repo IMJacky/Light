@@ -16,15 +16,13 @@ namespace Light.IdentityServer
             {
                 new Client
                 {
-                    ClientId = "client",
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
- 
-                    // Client secrets
+                    ClientId = "WebAppClientId",
+                    AllowedGrantTypes = { GrantType.ClientCredentials, GrantType.ResourceOwnerPassword },
                     ClientSecrets =
                     {
-                        new Secret("secret".Sha256())
+                        new Secret("WebAppClientSecret".Sha256())
                     },
-                    AllowedScopes = { "api1" }
+                    //AllowedScopes = { "AuthApi" }
                 },
             };
         }
@@ -34,7 +32,8 @@ namespace Light.IdentityServer
         {
             return new List<ApiResource>
             {
-                new ApiResource("api1", "My API")
+                new ApiResource("AuthApi", "Auth API-权限接口"),
+                new ApiResource("BlogApi", "Blog API-博客接口")
             };
         }
     }

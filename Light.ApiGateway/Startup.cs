@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,6 +17,16 @@ namespace Litght.ApiGateway
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            var authenticationProviderKey = "AuthProviderKey";
+            services.AddAuthentication()
+            .AddIdentityServerAuthentication(authenticationProviderKey, o =>
+            {
+                o.Authority = "http://localhost:4999";
+                //o.ApiName = "AuthApi";
+                //o.SupportedTokens = SupportedTokens.Both;
+                //o.ApiSecret = "WebAppClientSecret";
+                o.RequireHttpsMetadata = false;
+            });
             services.AddOcelot();
         }
 
