@@ -11,6 +11,7 @@ using Light.EFRespository.LightAuthority;
 using Light.Extension;
 using Microsoft.AspNetCore.Authorization;
 using Light.Common;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Light.AuthorityApi.Controllers.Single
 {
@@ -22,6 +23,7 @@ namespace Light.AuthorityApi.Controllers.Single
     public class RoleController : BaseController
     {
         private readonly IUnitOfWork<LightAuthorityContext> _unitOfWork;
+        private static readonly MemoryCache cache = new MemoryCache(new MemoryCacheOptions());
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -116,6 +118,14 @@ namespace Light.AuthorityApi.Controllers.Single
         [HttpGet("test")]
         public IActionResult Test()
         {
+            var role = new Role { Id = 1, RoleName = "1" };
+            bool isExist = cache.TryGetValue<Role>(nameof(role), out Role roleCache);
+            if (!isExist)
+            {
+                cache.Set(nameof(role), role, new MemoryCacheEntryOptions() {  });
+            }
+            return Ok(roleCache);
+
             List<Role> roles = new List<Role>();
             List<Task> tasks = new List<Task>();
             var taskOne = Task.Run(async () =>
