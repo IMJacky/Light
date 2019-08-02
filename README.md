@@ -22,3 +22,34 @@
   <parameter name="@message" layout="${message}" />
 </target>
 ```
+#服务和接口分别以Service结尾，作为规范，然后统一注册所有服务
+```
+/// <summary>
+/// 注册所有服务
+/// </summary>
+/// <param name="services"></param>
+public static void AddAllServices(this IServiceCollection services)
+{
+	string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Light.Service.dll");
+	Assembly assembly = Assembly.LoadFrom(path);
+	Type[] types = assembly.GetTypes();
+
+	string pathIService = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Light.IService.dll");
+	Assembly assemblyIService = Assembly.LoadFrom(pathIService);
+	Type[] typesIService = assemblyIService.GetTypes();
+	foreach (var type in types)
+	{
+		if (type.Name.Contains("Service"))
+		{
+			var iService = "I" + type.Name;
+			foreach (var typeIService in typesIService)
+			{
+				if (typeIService.Name.Equals(iService))
+				{
+					services.AddScoped(typeIService, type);
+				}
+			}
+		}
+	}
+}
+```

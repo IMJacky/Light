@@ -22,6 +22,7 @@ using Light.Common;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Light.Model;
+using Newtonsoft.Json;
 
 namespace Light.AuthorityApi
 {
@@ -105,7 +106,8 @@ namespace Light.AuthorityApi
             //    options.UseSqlServer(Configuration.GetConnectionString("LightAuthorityConnection")));
             services.AddScoped<IUnitOfWork<LightLogContext>, UnitOfWork<LightLogContext>>();
             services.AddScoped<IUnitOfWork<LightAuthorityContext>, UnitOfWork<LightAuthorityContext>>();
-            services.AddScoped(typeof(IAuthorityService), typeof(AuthorityService));
+            //services.AddScoped(typeof(IAuthorityService), typeof(AuthorityService));
+            services.AddAllServices();
             services.AddSwaggerGen(m =>
             {
                 m.SwaggerDoc("v1", new Info
@@ -123,6 +125,10 @@ namespace Light.AuthorityApi
                 m.IncludeXmlComments(xmlPathModel);
             });
 
+            services.AddRouting(m =>
+            {
+                m.LowercaseUrls = true;
+            });
             services.AddCors(m =>
             {
                 m.AddPolicy("Default", n =>
@@ -145,6 +151,8 @@ namespace Light.AuthorityApi
                 //不使用驼峰命名，否则首字母会小写
                 m.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 m.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                m.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
+                m.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             })
             .AddFluentValidation(m => m.RegisterValidatorsFromAssemblyContaining<Startup>())
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
