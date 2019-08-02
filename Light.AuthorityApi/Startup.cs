@@ -157,10 +157,7 @@ namespace Light.AuthorityApi
             });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddAutoMapper(m =>
-            {
-                m.AddProfile<ModelMappingProfile>();
-            });
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         /// <summary>
