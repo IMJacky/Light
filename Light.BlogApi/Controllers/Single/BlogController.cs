@@ -4,16 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Light.EFRespository;
 using Light.EFRespository.LightBlog;
+using Light.Extension;
 using Light.Model.CommonModel;
 using Light.Model.TableModel.LightBlog;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Light.BlogApi.Controllers.Single
 {
+    /// <summary>
+    /// 博客控制器
+    /// </summary>
+    [Produces("application/json")]
     [Route("blog/main")]
-    [ApiController]
-    public class BlogController : ControllerBase
+    public class BlogController : BaseController
     {
         private readonly IUnitOfWork<LightBlogContext> _unitOfWork;
         /// <summary>
@@ -30,6 +35,7 @@ namespace Light.BlogApi.Controllers.Single
         /// </summary>
         /// <returns></returns>
         [HttpGet("all")]
+        [Authorize]
         public async Task<IActionResult> GetAllBlog()
         {
             return Ok(await _unitOfWork.GetRepository<Blog>().GetListAsyncCurrent());

@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+@using Light.Model.CommonModel;
+@using Light.Model.RequestModel.LightAuthority;
+@model UserLoginRequest
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div align="center">
+        <h1>统一认证登录中心</h1>
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            @if (Model != null && !Model.IsSuccess && !string.IsNullOrWhiteSpace(Model.Message))
+            {
+                <div>
+                    @Model.Message
+                </div>
+            }
+            <div>
+                @Html.DisplayNameFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
+
+            <div>
+                @Html.DisplayNameFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            @Html.Hidden("ReturnUrl", (string)ViewBag.ReturnUrl)
+            <div>
+                <button type="submit">
+                    登 录
+                </button>
+            </div>
+        }
+    </div>
+</body>
+</html>

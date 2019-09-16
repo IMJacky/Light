@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Light.BlogApi</name>
+    </assembly>
+    <members>
+        <member name="T:Light.BlogApi.Controllers.Single.BlogController">
+            <summary>
+            博客控制器
+            </summary>
+        </member>
+        <member name="M:Light.BlogApi.Controllers.Single.BlogController.#ctor(Light.EFRespository.IUnitOfWork{Light.EFRespository.LightBlog.LightBlogContext})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="unitOfWork"></param>
+        </member>
+        <member name="M:Light.BlogApi.Controllers.Single.BlogController.GetAllBlog">
+            <summary>
+            所有博客列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Light.BlogApi.Controllers.Single.BlogController.GetAllUserByPage(Light.Model.CommonModel.PageRequest)">
+            <summary>
+            分页所有博客列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Light.BlogApi.Controllers.Single.BlogController.GetBlogById(System.Int32)">
+            <summary>
+            根据Id获取一个博客
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Light.BlogApi.Controllers.Single.BlogController.AddBlog(Light.Model.TableModel.LightBlog.Blog)">
+            <summary>
+            添加一个博客
+            </summary>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Light.BlogApi.Controllers.Single.BlogController.UpdateBlog(Light.Model.TableModel.LightBlog.Blog)">
+            <summary>
+            更新一个博客
+            </summary>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Light.BlogApi.Controllers.Single.BlogController.DeleteBlog(System.Int32)">
+            <summary>
+            删除一个博客
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

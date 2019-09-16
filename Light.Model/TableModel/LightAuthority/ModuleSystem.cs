@@ -15,7 +15,7 @@ namespace Light.Model.TableModel.LightAuthority
         public string ModuleName { get; set; }
 
         /// <summary>
-        /// Angular的路由地址
+        /// 路由地址
         /// </summary>
         public string RouteUrl { get; set; }
 
@@ -23,6 +23,11 @@ namespace Light.Model.TableModel.LightAuthority
         /// 父级Id（Id=0表示头部总菜单）
         /// </summary>
         public int ParentId { get; set; }
+
+        /// <summary>
+        /// 图标
+        /// </summary>
+        public string Icon { get; set; }
 
         /// <summary>
         /// 排序值（越大越靠前）

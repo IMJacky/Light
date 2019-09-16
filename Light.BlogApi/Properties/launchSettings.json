@@ -1,5 +1,4 @@
 ﻿{
-  "$schema": "http://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false, 
     "anonymousAuthentication": true, 
@@ -12,7 +11,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "blog/main",
+      "launchUrl": "lightblog",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,11 +19,11 @@
     "Light.BlogApi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "blog/main",
-      "applicationUrl": "http://localhost:5002",
+      "launchUrl": "lightblog",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "http://localhost:5002"
     }
   }
 }

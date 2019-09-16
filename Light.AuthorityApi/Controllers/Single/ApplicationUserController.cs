@@ -43,6 +43,7 @@ namespace Light.AuthorityApi.Controllers.Single
         /// <returns></returns>
         //[HttpGet("all/{d:int:range(1,3)}")]
         [HttpGet("all")]
+        [Authorize]
         public async Task<IActionResult> GetAllUser()
         {
             return Ok(await _unitOfWork.GetRepository<ApplicationUser>().GetListAsync(m => _mapper.Map<ApplicationUser, ApplicationUserResponse>(m)));
@@ -78,12 +79,13 @@ namespace Light.AuthorityApi.Controllers.Single
         public async Task<IActionResult> AddUser([FromBody]ApplicationUser user)
         {
             await _unitOfWork.GetRepository<ApplicationUser>().AddAsync(user);
-            var publisher = new PublisherGenerics<LoginEventArgs>();
-            publisher.Notify(new LoginEventArgs { UserName = user.UserName, IP = "127.0.0.1" });
+            //var publisher = new PublisherGenerics<LoginEventArgs>();
+            //publisher.Notify(new LoginEventArgs { UserName = user.UserName, IP = "127.0.0.1" });
 
-            var publisherRegister = new PublisherGenerics<RegisterEventArgs>();
-            publisherRegister.Notify(new RegisterEventArgs { UserName = user.UserName, IP = "127.0.0.1" });
-            return Ok(await _unitOfWork.SaveChangesAsync());
+            //var publisherRegister = new PublisherGenerics<RegisterEventArgs>();
+            //publisherRegister.Notify(new RegisterEventArgs { UserName = user.UserName, IP = "127.0.0.1" });
+            var result = await _unitOfWork.SaveChangesAsync();
+            return Ok(result);
         }
 
         /// <summary>

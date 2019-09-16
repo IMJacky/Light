@@ -34,6 +34,10 @@ namespace Light.EFRespository.LightAuthority
                         .IsRequired()
                        .HasColumnType("nvarchar(50)");
 
+                m.Property(t => t.Icon)
+                        .IsRequired()
+                       .HasColumnType("nvarchar(50)");
+
                 m.Property(t => t.RouteUrl)
                         .IsRequired()
                         .HasColumnType("nvarchar(200)");

@@ -51,7 +51,7 @@ namespace Light.Model.ResponseModel.LightAuthority
         public string ModuleName { get; set; }
 
         /// <summary>
-        /// Angular的路由地址
+        /// 路由地址
         /// </summary>
         public string RouteUrl { get; set; }
 

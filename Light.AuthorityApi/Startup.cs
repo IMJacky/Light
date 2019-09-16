@@ -138,7 +138,7 @@ namespace Light.AuthorityApi
                     n.AllowAnyOrigin();
                 });
             });
-            services.AddEventBus();
+            //services.AddEventBus();
             services.AddMvc(m =>
             {
                 //使用ExceptionHandleFilter或者ExceptionHandleMiddleware
@@ -162,6 +162,7 @@ namespace Light.AuthorityApi
             {
                 options.Authority = "http://localhost:4999";
                 options.RequireHttpsMetadata = false;
+                options.ApiName = "AuthApi";
             });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -182,7 +183,7 @@ namespace Light.AuthorityApi
             app.UseSwaggerUI(m =>
             {
                 m.SwaggerEndpoint("/swagger/v1/swagger.json", "Light.Authority API V1");
-                m.RoutePrefix = "light";
+                m.RoutePrefix = "lightauth";
             });
             var environmentName = env.EnvironmentName;
             if (env.IsDevelopment())

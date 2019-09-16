@@ -11,7 +11,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "light",
+      "launchUrl": "lightauth",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -19,11 +19,11 @@
     "Light.AuthorityApi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "light",
+      "launchUrl": "lightauth",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5001/"
+      "applicationUrl": "http://localhost:5001"
     }
   }
 }
