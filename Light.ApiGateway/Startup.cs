@@ -22,9 +22,6 @@ namespace Litght.ApiGateway
             .AddIdentityServerAuthentication(authenticationProviderKey, o =>
             {
                 o.Authority = "http://localhost:4999";
-                //o.ApiName = "AuthApi";
-                //o.SupportedTokens = SupportedTokens.Both;
-                //o.ApiSecret = "WebAppClientSecret";
                 o.RequireHttpsMetadata = false;
             });
             services.AddOcelot();

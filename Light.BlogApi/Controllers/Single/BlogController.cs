@@ -35,7 +35,6 @@ namespace Light.BlogApi.Controllers.Single
         /// </summary>
         /// <returns></returns>
         [HttpGet("all")]
-        [Authorize]
         public async Task<IActionResult> GetAllBlog()
         {
             return Ok(await _unitOfWork.GetRepository<Blog>().GetListAsyncCurrent());

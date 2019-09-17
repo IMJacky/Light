@@ -158,12 +158,12 @@ namespace Light.AuthorityApi
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddAuthentication("Bearer")
-            .AddIdentityServerAuthentication(options =>
-            {
-                options.Authority = "http://localhost:4999";
-                options.RequireHttpsMetadata = false;
-                options.ApiName = "AuthApi";
-            });
+            .AddIdentityServerAuthentication("Bearer", options =>
+             {
+                 options.Authority = "http://localhost:4999";
+                 options.RequireHttpsMetadata = false;
+                 options.ApiName = "AuthApi";
+             });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

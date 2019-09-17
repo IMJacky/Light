@@ -43,7 +43,6 @@ namespace Light.AuthorityApi.Controllers.Single
         /// <returns></returns>
         //[HttpGet("all/{d:int:range(1,3)}")]
         [HttpGet("all")]
-        [Authorize]
         public async Task<IActionResult> GetAllUser()
         {
             return Ok(await _unitOfWork.GetRepository<ApplicationUser>().GetListAsync(m => _mapper.Map<ApplicationUser, ApplicationUserResponse>(m)));
