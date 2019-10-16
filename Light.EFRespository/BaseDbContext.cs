@@ -41,13 +41,13 @@ namespace Light.EFRespository
                 var createDateProperty = entityType.FindProperty("CreateDate");
                 if (createDateProperty != null && createDateProperty.ClrType == typeof(DateTime))
                 {
-                    createDateProperty.SqlServer().ColumnType = "datetime";
+                    createDateProperty.SetColumnType("datetime");
                 }
 
                 var updateDateProperty = entityType.FindProperty("UpdateDate");
                 if (updateDateProperty != null && updateDateProperty.ClrType == typeof(DateTime))
                 {
-                    updateDateProperty.SqlServer().ColumnType = "datetime";
+                    updateDateProperty.SetColumnType("datetime");
                 }
             }
 
@@ -83,7 +83,7 @@ namespace Light.EFRespository
             return base.SaveChanges();
         }
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             ChangeTracker.DetectChanges();
 

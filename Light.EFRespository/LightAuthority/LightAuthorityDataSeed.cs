@@ -117,6 +117,7 @@ namespace Light.EFRespository.LightAuthority
                     {
                         ModuleName = "报表管理",
                         RouteUrl = string.Empty,
+                        Icon = string.Empty,
                         ParentId = 0,
                         UpdaterId = 1,
                         UpdaterName = "王杰光",
@@ -128,6 +129,7 @@ namespace Light.EFRespository.LightAuthority
                     {
                         ModuleName = "人事管理",
                         RouteUrl = string.Empty,
+                        Icon = string.Empty,
                         ParentId = 0,
                         UpdaterId = 1,
                         UpdaterName = "王杰光",
@@ -139,6 +141,7 @@ namespace Light.EFRespository.LightAuthority
                     {
                         ModuleName = "系统管理",
                         RouteUrl = string.Empty,
+                        Icon = string.Empty,
                         ParentId = 0,
                         UpdaterId = 1,
                         UpdaterName = "王杰光",
@@ -150,6 +153,7 @@ namespace Light.EFRespository.LightAuthority
                     {
                         ModuleName = "系统用户",
                         RouteUrl = string.Empty,
+                        Icon = string.Empty,
                         ParentId = 3,
                         UpdaterId = 1,
                         UpdaterName = "王杰光",
@@ -162,6 +166,7 @@ namespace Light.EFRespository.LightAuthority
                         ModuleName = "用户列表",
                         ParentId = 4,
                         RouteUrl = "users",
+                        Icon = string.Empty,
                         UpdaterId = 1,
                         UpdaterName = "王杰光",
                         UpdateDate = DateTime.Now,
@@ -172,6 +177,7 @@ namespace Light.EFRespository.LightAuthority
                     {
                         ModuleName = "业绩报表",
                         RouteUrl = string.Empty,
+                        Icon = string.Empty,
                         ParentId = 1,
                         UpdaterId = 1,
                         UpdaterName = "王杰光",
@@ -184,6 +190,7 @@ namespace Light.EFRespository.LightAuthority
                         ModuleName = "个人业绩",
                         ParentId = 6,
                         RouteUrl = "userachieve",
+                        Icon = string.Empty,
                         UpdaterId = 1,
                         UpdaterName = "王杰光",
                         UpdateDate = DateTime.Now,
@@ -194,6 +201,7 @@ namespace Light.EFRespository.LightAuthority
                     {
                         ModuleName = "员工管理",
                         RouteUrl = string.Empty,
+                        Icon = string.Empty,
                         ParentId = 2,
                         UpdaterId = 1,
                         UpdaterName = "王杰光",
@@ -206,6 +214,7 @@ namespace Light.EFRespository.LightAuthority
                         ModuleName = "员工列表",
                         ParentId = 8,
                         RouteUrl = "employees",
+                        Icon = string.Empty,
                         UpdaterId = 1,
                         UpdaterName = "王杰光",
                         UpdateDate = DateTime.Now,
@@ -216,6 +225,7 @@ namespace Light.EFRespository.LightAuthority
                     {
                         ModuleName = "系统角色",
                         RouteUrl = string.Empty,
+                        Icon = string.Empty,
                         ParentId = 3,
                         UpdaterId = 1,
                         UpdaterName = "王杰光",
@@ -228,6 +238,7 @@ namespace Light.EFRespository.LightAuthority
                         ModuleName = "角色列表",
                         ParentId = 10,
                         RouteUrl = "roles",
+                        Icon = string.Empty,
                         UpdaterId = 1,
                         UpdaterName = "王杰光",
                         UpdateDate = DateTime.Now,
@@ -239,6 +250,7 @@ namespace Light.EFRespository.LightAuthority
                         ModuleName = "新增用户",
                         ParentId = 4,
                         RouteUrl = "users/add",
+                        Icon = string.Empty,
                         UpdaterId = 1,
                         UpdaterName = "王杰光",
                         UpdateDate = DateTime.Now,

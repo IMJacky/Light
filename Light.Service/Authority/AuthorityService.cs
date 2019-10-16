@@ -15,6 +15,7 @@ namespace Light.Service.Authority
     /// <summary>
     /// 权限相关服务实现
     /// </summary>
+    [RegisterService(IServiceType = typeof(IAuthorityService))]
     public class AuthorityService : IAuthorityService
     {
         private readonly IUnitOfWork<LightAuthorityContext> _unitOfWork;

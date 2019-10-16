@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Light.EFRespository;
 using Light.EFRespository.LightAuthority;
 using Light.EFRespository.LightLog;
+using Microsoft.Extensions.Hosting;
 
 namespace Light.AuthorityApi
 {
@@ -41,8 +42,15 @@ namespace Light.AuthorityApi
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateWebHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.ConfigureKestrel(serverOptions =>
+                {
+                    // Set properties and call methods on options
+                })
                 .UseStartup<Startup>();
+            });
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Light.Model.CommonModel;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace Light.EFRespository
         /// </summary>
         /// <param name="entity">要创建的实体</param>
         /// <returns></returns>
-        Task AddAsync(T entity);
+        ValueTask<EntityEntry<T>> AddAsync(T entity);
 
         /// <summary>
         /// 批量添加实体

@@ -1,6 +1,7 @@
 ﻿using Light.Model.CommonModel;
 using Light.Model.TableModel;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace Light.EFRespository
             _dbSet.AddRange(entityList);
         }
 
-        public Task AddAsync(T entity)
+        public ValueTask<EntityEntry<T>> AddAsync(T entity)
         {
             return _dbSet.AddAsync(entity);
         }
