@@ -22,34 +22,25 @@
   <parameter name="@message" layout="${message}" />
 </target>
 ```
-# 服务和接口分别以Service结尾，作为规范，然后统一注册所有服务
+# 服务和接口使用RegisterServiceAttribute，然后统一注册所有服务
 ```
-/// <summary>
-/// 注册所有服务
-/// </summary>
-/// <param name="services"></param>
-public static void AddAllServices(this IServiceCollection services)
-{
-	string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Light.Service.dll");
-	Assembly assembly = Assembly.LoadFrom(path);
-	Type[] types = assembly.GetTypes();
-
-	string pathIService = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Light.IService.dll");
-	Assembly assemblyIService = Assembly.LoadFrom(pathIService);
-	Type[] typesIService = assemblyIService.GetTypes();
-	foreach (var type in types)
-	{
-		if (type.Name.Contains("Service"))
-		{
-			var iService = "I" + type.Name;
-			foreach (var typeIService in typesIService)
-			{
-				if (typeIService.Name.Equals(iService))
-				{
-					services.AddScoped(typeIService, type);
-				}
-			}
-		}
-	}
-}
+    /// <summary>
+    /// ServiceCollection扩展方法
+    /// </summary>
+    public static class ServiceCollectionExtensions
+    {
+        public static void RegisterAllService(this IServiceCollection services, params string[] assemblyNames)
+        {
+            foreach (var assemblyName in assemblyNames)
+            {
+                Assembly assemblie = Assembly.LoadFrom(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, assemblyName + ".dll"));
+                var typesInfos = assemblie.DefinedTypes.Where(x => x.GetCustomAttributes().Any(a => a is RegisterServiceAttribute)).ToList();
+                foreach (var type in typesInfos)
+                {
+                    var registerServiceAttribute = type.GetCustomAttribute<RegisterServiceAttribute>();
+                    services.Add(new ServiceDescriptor(registerServiceAttribute.IServiceType, type, registerServiceAttribute.ServiceLifetime));
+                }
+            }
+        }
+    }
 ```
