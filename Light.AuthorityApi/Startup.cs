@@ -187,9 +187,10 @@ namespace Light.AuthorityApi
             });
             var environmentName = env.EnvironmentName;
             //app.UseMiddleware<RequestElapseMiddleware>();
+            app.UseRouting();
             app.UseCors("Default");
             app.UseAuthentication();
-            app.UseRouting();
+            app.UseAuthorization();//这两个位置不能颠倒
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

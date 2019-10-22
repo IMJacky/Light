@@ -126,7 +126,6 @@ namespace Light.BlogApi
         {
             //使用ExceptionHandleFilter或者ExceptionHandleMiddleware
             app.UseMiddleware<ExceptionHandleMiddleware>();
-
             app.UseSwagger();
             app.UseSwaggerUI(m =>
             {
@@ -135,9 +134,10 @@ namespace Light.BlogApi
             });
             var environmentName = env.EnvironmentName;
             //app.UseMiddleware<RequestElapseMiddleware>();
+            app.UseRouting();
             app.UseCors("Default");
             app.UseAuthentication();
-            app.UseRouting();
+            app.UseAuthorization();//这两个位置不能颠倒
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

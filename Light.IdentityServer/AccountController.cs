@@ -84,7 +84,7 @@ namespace Light.IdentityServer
                     AuthenticationProperties props = new AuthenticationProperties
                     {
                         IsPersistent = true,
-                        ExpiresUtc = DateTimeOffset.UtcNow.Add(TimeSpan.FromDays(1))
+                        ExpiresUtc = DateTimeOffset.UtcNow.Add(TimeSpan.FromMinutes(1))
                     };
                     await HttpContext.SignInAsync(userExist.Id.ToString(), userExist.UserName, props);
                     if (!string.IsNullOrWhiteSpace(userLogin.ReturnUrl))

@@ -1,51 +1,48 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer4.Models;
-using Light.EFRespository;
-using Light.EFRespository.LightAuthority;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 
-namespace Light.IdentityServer
+namespace Light.Web
 {
     public class Startup
     {
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-        /// <summary>
-        /// Configuration
-        /// </summary>
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-            services.AddDbContext<LightAuthorityContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("LightAuthorityConnectionMySql")));
-            services.AddScoped<IUnitOfWork<LightAuthorityContext>, UnitOfWork<LightAuthorityContext>>();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "Cookies";
+                options.DefaultChallengeScheme = "oidc";
+            })
+                .AddCookie("Cookies")
+                .AddOpenIdConnect("oidc", options =>
+                {
+                    options.SignInScheme = "Cookies";
 
-            services.AddIdentityServer()
-            .AddDeveloperSigningCredential()
-            .AddInMemoryApiResources(Config.GetApiResources())
-            .AddInMemoryIdentityResources(Config.GetIdentityResources())
-            .AddInMemoryClients(Config.GetClients());
+                    options.Authority = "http://localhost:4999";
+                    options.RequireHttpsMetadata = false;
+
+                    options.ClientId = "mvc";
+                    options.SaveTokens = true;
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,14 +52,21 @@ namespace Light.IdentityServer
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseIdentityServer();
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+            app.UseStaticFiles();
+
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
