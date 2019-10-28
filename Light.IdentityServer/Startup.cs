@@ -41,7 +41,12 @@ namespace Light.IdentityServer
                 options.UseMySql(Configuration.GetConnectionString("LightAuthorityConnectionMySql")));
             services.AddScoped<IUnitOfWork<LightAuthorityContext>, UnitOfWork<LightAuthorityContext>>();
 
-            services.AddIdentityServer()
+            services.AddIdentityServer(option =>
+            {
+                //可以通过此设置来指定登录路径，默认的登陆路径是/account/login
+                option.UserInteraction.LoginUrl = "/account/login";
+                //option.Authentication.CookieLifetime = TimeSpan.FromMinutes(1);
+            })
             .AddDeveloperSigningCredential()
             .AddInMemoryApiResources(Config.GetApiResources())
             .AddInMemoryIdentityResources(Config.GetIdentityResources())

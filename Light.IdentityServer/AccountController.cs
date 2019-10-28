@@ -11,6 +11,12 @@ using IdentityServer4.Stores;
 using Microsoft.AspNetCore.Authentication;
 using System;
 using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
+using IdentityModel;
+using IdentityServer4.Extensions;
+using IdentityServer4;
+using System.Security.Claims;
 
 namespace Light.IdentityServer
 {
@@ -87,7 +93,7 @@ namespace Light.IdentityServer
                         ExpiresUtc = DateTimeOffset.UtcNow.Add(TimeSpan.FromMinutes(1))
                     };
                     await HttpContext.SignInAsync(userExist.Id.ToString(), userExist.UserName, props);
-                    if (!string.IsNullOrWhiteSpace(userLogin.ReturnUrl))
+                    if (_interaction.IsValidReturnUrl(userLogin.ReturnUrl))
                     {
                         return Redirect(userLogin.ReturnUrl);
                     }
@@ -100,5 +106,55 @@ namespace Light.IdentityServer
             }
             return View(userLogin);
         }
+
+        //[HttpPost]
+        //[AllowAnonymous]
+        //public async Task<IActionResult> Logout(UserLogoutRequest model)
+        //{
+        //    var idp = User?.FindFirst(JwtClaimTypes.IdentityProvider)?.Value;
+        //    var subjectId = HttpContext.User.Identity.GetSubjectId();
+
+        //    if (idp != null && idp != IdentityServerConstants.LocalIdentityProvider)
+        //    {
+        //        if (model.UserId == null)
+        //        {
+        //            // if there's no current logout context, we need to create one
+        //            // this captures necessary info from the current logged in user
+        //            // before we signout and redirect away to the external IdP for signout
+        //            model.UserId = await _interaction.CreateLogoutContextAsync();
+        //        }
+
+        //        string url = "/Account/Logout?logoutId=" + model.UserId;
+        //        try
+        //        {
+        //            // hack: try/catch to handle social providers that throw
+        //            await HttpContext.Authentication.SignOutAsync(idp, new AuthenticationProperties { RedirectUri = url });
+        //        }
+        //        catch (NotSupportedException)
+        //        {
+        //        }
+        //    }
+
+        //    // delete authentication cookie
+        //    await _signInManager.SignOutAsync();
+
+        //    // set this so UI rendering sees an anonymous user
+        //    HttpContext.User = new ClaimsPrincipal(new ClaimsIdentity());
+
+        //    // get context information (client name, post logout redirect URI and iframe for federated signout)
+        //    var logout = await _interaction.GetLogoutContextAsync(model.UserId);
+
+        //    var vm = new LoggedOutViewModel
+        //    {
+        //        PostLogoutRedirectUri = logout?.PostLogoutRedirectUri,
+        //        ClientName = logout?.ClientId,
+        //        SignOutIframeUrl = logout?.SignOutIFrameUrl
+        //    };
+
+        //    await _persistedGrantService.RemoveAllGrantsAsync(subjectId, "angular2client");
+
+        //    return Redirect(Config.HOST_URL + "/index.html");
+        //    //return View("LoggedOut", vm);
+        //}
     }
 }

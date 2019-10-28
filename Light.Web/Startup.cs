@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Http;
 
 namespace Light.Web
 {
@@ -32,7 +33,10 @@ namespace Light.Web
                 options.DefaultScheme = "Cookies";
                 options.DefaultChallengeScheme = "oidc";
             })
-                .AddCookie("Cookies")
+                .AddCookie("Cookies", m =>
+                {
+                    //m.ExpireTimeSpan = TimeSpan.FromMinutes(1);
+                 })
                 .AddOpenIdConnect("oidc", options =>
                 {
                     options.SignInScheme = "Cookies";
@@ -41,7 +45,14 @@ namespace Light.Web
                     options.RequireHttpsMetadata = false;
 
                     options.ClientId = "mvc";
-                    options.SaveTokens = true;
+                    options.ClientSecret = options.ClientId;
+
+                    //指定允许服务端返回的地址，默认是new PathString("/signin-oidc")
+                    //如果这里地址进行了自定义，那么服务端也要进行修改
+                    options.CallbackPath = new PathString("/signin-oidc");
+
+                    //指定用户注销后，服务端可以调用客户端注销的地址，默认是new PathString("signout-callback-oidc")
+                    options.SignedOutCallbackPath = new PathString("/signout-callback-oidc");
                 });
         }
 
