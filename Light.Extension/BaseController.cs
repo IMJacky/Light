@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Light.Extension
 {
-    //[Authorize]
+    [Authorize]
     public class BaseController : ControllerBase
     {
     }

@@ -2,6 +2,19 @@
   "ReRoutes": [
     {
       "UseServiceDiscovery": false,
+      "DownstreamPathTemplate": "/connect/token",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4999
+        }
+      ],
+      "UpstreamPathTemplate": "/token/get",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "UseServiceDiscovery": false,
       "DownstreamPathTemplate": "/auth/{controller}/{action}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
