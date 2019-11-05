@@ -1,0 +1,57 @@
+﻿echo 'dotnet start'
+
+echo '1、env'
+pwd
+ls
+whoami
+which dotnet
+dotnet --info
+dotnet --version
+
+echo '2、cd Light.ApiGateway'
+cd ./Light.ApiGateway
+
+echo '3、dotnet restore Light.ApiGateway'
+dotnet restore
+
+echo '4、delete and add directory Light_ApiGateway_Publish'
+rm -rf $WORKSPACE/Light_ApiGateway_Publish
+mkdir $WORKSPACE/Light_ApiGateway_Publish
+
+echo '5、dotnet publish Light.ApiGateway'
+dotnet publish -c:Release -o $WORKSPACE/Light_ApiGateway_Publish
+
+echo 'dotnet end'
+
+echo '6、cd Light_ApiGateway_Publish'
+cd $WORKSPACE/Light_ApiGateway_Publish
+
+echo 'docker start'
+
+echo '7、add Dockerfile'
+touch Dockerfile
+echo "FROM microsoft/dotnet" >> Dockerfile
+echo "WORKDIR /app" >> Dockerfile
+echo "COPY . ." >> Dockerfile
+echo "EXPOSE 5000" >> Dockerfile
+echo "ENV ASPNETCORE_URLS http://*:5000" >> Dockerfile
+echo "ENV ASPNETCORE_ENVIRONMENT Production" >> Dockerfile
+echo "ENTRYPOINT [\"dotnet\", \"Light.ApiGateway.dll\"]" >> Dockerfile
+
+echo '8、stop container light.apigateway'
+sudo docker stop $(sudo docker ps -a -q  --filter=ancestor=light.apigateway) || :
+
+echo '9、delete container light.apigateway'
+sudo docker rm $(sudo docker ps -a -q --filter=ancestor=light.apigateway) || :
+
+echo '10、delete image light.apigateway'
+sudo docker rmi light.apigateway || :
+
+echo '11、build image light.apigateway'
+sudo docker build -t light.apigateway .
+
+echo '12、run container light.apigateway'
+sudo docker run -p 5000:5000 -d --name light.apigateway light.apigateway
+
+echo 'docker end'
+

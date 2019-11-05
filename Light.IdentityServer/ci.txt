@@ -1,0 +1,57 @@
+﻿echo 'dotnet start'
+
+echo '1、env'
+pwd
+ls
+whoami
+which dotnet
+dotnet --info
+dotnet --version
+
+echo '2、cd Light.IdentityServer'
+cd ./Light.IdentityServer
+
+echo '3、dotnet restore Light.IdentityServer'
+dotnet restore
+
+echo '4、delete and add directory Light_IdentityServer_Publish'
+rm -rf $WORKSPACE/Light_IdentityServer_Publish
+mkdir $WORKSPACE/Light_IdentityServer_Publish
+
+echo '5、dotnet publish Light.IdentityServer'
+dotnet publish -c:Release -o $WORKSPACE/Light_IdentityServer_Publish
+
+echo 'dotnet end'
+
+echo '6、cd Light_IdentityServer_Publish'
+cd $WORKSPACE/Light_IdentityServer_Publish
+
+echo 'docker start'
+
+echo '7、add Dockerfile'
+touch Dockerfile
+echo "FROM microsoft/dotnet" >> Dockerfile
+echo "WORKDIR /app" >> Dockerfile
+echo "COPY . ." >> Dockerfile
+echo "EXPOSE 4999" >> Dockerfile
+echo "ENV ASPNETCORE_URLS http://*:4999" >> Dockerfile
+echo "ENV ASPNETCORE_ENVIRONMENT Production" >> Dockerfile
+echo "ENTRYPOINT [\"dotnet\", \"Light.IdentityServer.dll\"]" >> Dockerfile
+
+echo '8、stop container light.identityserver'
+sudo docker stop $(sudo docker ps -a -q  --filter=ancestor=light.identityserver) || :
+
+echo '9、delete container light.identityserver'
+sudo docker rm $(sudo docker ps -a -q --filter=ancestor=light.identityserver) || :
+
+echo '10、delete image light.identityserver'
+sudo docker rmi light.identityserver || :
+
+echo '11、build image light.identityserver'
+sudo docker build -t light.identityserver .
+
+echo '12、run container light.identityserver'
+sudo docker run -p 4999:4999 -d --name light.identityserver light.identityserver
+
+echo 'docker end'
+
