@@ -30,7 +30,7 @@ echo 'docker start'
 
 echo '7、add Dockerfile'
 touch Dockerfile
-echo "FROM microsoft/dotnet" >> Dockerfile
+echo "FROM mcr.microsoft.com/dotnet/core/aspnet" >> Dockerfile
 echo "WORKDIR /app" >> Dockerfile
 echo "COPY . ." >> Dockerfile
 echo "EXPOSE 4999" >> Dockerfile
