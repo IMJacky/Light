@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Logging;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -31,11 +32,12 @@ namespace Litght.ApiGateway
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //IdentityModelEventSource.ShowPII = true;
             var authenticationProviderKey = "AuthProviderKey";
             services.AddAuthentication()
             .AddIdentityServerAuthentication(authenticationProviderKey, o =>
             {
-                o.Authority = "http://localhost:4999";
+                o.Authority = "http://10.154.5.185:4999";
                 o.RequireHttpsMetadata = false;
             });
             services.AddOcelot(Configuration);
