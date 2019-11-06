@@ -3,7 +3,7 @@
     "windowsAuthentication": false, 
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://10.154.5.185:5002",
+      "applicationUrl": "http://10.102.40.72:5002",
       "sslPort": 0
     }
   },
@@ -20,7 +20,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       //"launchUrl": "lightblog",
-      "applicationUrl": "http://10.154.5.185:5002",
+      "applicationUrl": "http://10.102.40.72:5002",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

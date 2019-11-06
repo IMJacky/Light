@@ -108,7 +108,7 @@ namespace Light.BlogApi
             services.AddAuthentication("Bearer")
             .AddIdentityServerAuthentication(options =>
             {
-                options.Authority = "http://10.154.5.185:4999";
+                options.Authority = "http://10.102.40.72:4999";
                 options.RequireHttpsMetadata = false;
                 options.ApiName = "BlogApi";
             });

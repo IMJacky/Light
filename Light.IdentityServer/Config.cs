@@ -36,8 +36,8 @@ namespace Light.IdentityServer
                     },
                     AllowedGrantTypes = GrantTypes.Implicit,//隐式方式
                     RequireConsent = false,//如果不需要显示否同意授权 页面 这里就设置为false
-                    RedirectUris = { "http://10.154.5.185:5003/signin-oidc" },//指定允许令牌或授权码返回的地址（URL）
-                    PostLogoutRedirectUris = { "http://10.154.5.185:5003/signout-callback-oidc" },//指定允许注销后返回的地址(URL)
+                    RedirectUris = { "http://10.102.40.72:5003/signin-oidc" },//指定允许令牌或授权码返回的地址（URL）
+                    PostLogoutRedirectUris = { "http://10.102.40.72:5003/signout-callback-oidc" },//指定允许注销后返回的地址(URL)
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,

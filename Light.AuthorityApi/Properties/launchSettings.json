@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://10.154.5.185:5001",
+      "applicationUrl": "http://10.102.40.72:5001",
       "sslPort": 0
     }
   },
@@ -20,7 +20,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       //"launchUrl": "lightauth",
-      "applicationUrl": "http://10.154.5.185:5001",
+      "applicationUrl": "http://10.102.40.72:5001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

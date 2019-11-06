@@ -37,7 +37,7 @@ namespace Litght.ApiGateway
             services.AddAuthentication()
             .AddIdentityServerAuthentication(authenticationProviderKey, o =>
             {
-                o.Authority = "http://10.154.5.185:4999";
+                o.Authority = "http://10.102.40.72:4999";
                 o.RequireHttpsMetadata = false;
             });
             services.AddOcelot(Configuration);
