@@ -186,7 +186,7 @@ namespace Light.AuthorityApi
                 m.RoutePrefix = "lightauth";
             });
             var environmentName = env.EnvironmentName;
-            //app.UseMiddleware<RequestElapseMiddleware>();
+            app.UseMiddleware<RequestResponseMiddleware>();
             app.UseRouting();
             app.UseCors("Default");
             app.UseAuthentication();
