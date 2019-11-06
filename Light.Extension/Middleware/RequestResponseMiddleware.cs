@@ -52,9 +52,7 @@ namespace Light.Extension.Middleware
                 stringBuilder.AppendFormat("，耗时：{0}ms，响应码：{1}，响应体：{2}", stopwatch.ElapsedMilliseconds, response.StatusCode, responseText);
             }
 
-#if !DEBUG
             NLogManager.LogTrace(stringBuilder.ToString()); 
-#endif
         }
     }
 }

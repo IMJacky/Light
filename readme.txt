@@ -17,6 +17,6 @@
 4、Mysql8.0m密码模式修改四部曲
 mysql -u root -p
 use mysql
-alter user 'root'@'localhost' identified by 'your pwd' password expire never
-alter user 'root'@'localhost' identified with mysql_native_password by 'your pwd'
+alter user 'root'@'10.154.5.185' identified by 'your pwd' password expire never
+alter user 'root'@'10.154.5.185' identified with mysql_native_password by 'your pwd'
 flush privileges

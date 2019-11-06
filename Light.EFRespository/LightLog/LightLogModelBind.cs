@@ -11,7 +11,7 @@ namespace Light.EFRespository.LightLog
             {
                 m.Property(t => t.Message)
                         .IsRequired()
-                        .HasColumnType("nvarchar(4000)");
+                        .HasColumnType("text");
 
                 m.Property(t => t.Level)
                         .IsRequired()
