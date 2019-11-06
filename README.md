@@ -5,6 +5,14 @@
 # 怎么运行
 想运行起来很简单，只要把appsettings.json里边的数据库连接配置弄好就可以了，运行之后系统会自动生成所有的表，支持Mysql和SQL Server
 
+2019.11.05更新
+
+因为加入了IdentityServer4和ApiGateway，所以如果想要真正运行起来，这两个项目也要提前运行。
+然后Postman先获取token，然后再用token去请求接口数据
+
+![](https://github.com/IMJacky/picturestore/blob/master/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_15730038295612.png)
+![](https://github.com/IMJacky/picturestore/blob/master/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_15730038472866.png)
+
 # NLog日志配置
 和appsettings.json的连接字符串保持一致即可：
 ```
