@@ -1,7 +1,7 @@
 FROM jenkins/jenkins:lts
 USER root
 WORKDIR /dotnet
-RUN wget -O dotnet.tar.gz https://download.visualstudio.microsoft.com/download/pr/886b4a4c-30af-454b-8bec-81c72b7b4e1f/d1a0c8de9abb36d8535363ede4a15de6/dotnet-sdk-3.0.100-linux-x64.tar.gz
+RUN wget -O dotnet.tar.gz https://download.visualstudio.microsoft.com/download/pr/daec2daf-b458-4ae1-9046-b8ba09b5fb49/733e2d73b41640d6e6bdf1cc6b9ef03b/dotnet-sdk-3.1.200-linux-x64.tar.gz
 RUN tar zxf dotnet.tar.gz -C ./
 RUN rm -rf dotnet.tar.gz
 ENV PATH="${PATH}:/dotnet"
@@ -14,6 +14,6 @@ RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
 USER jenkins
 
-#docker build -t wangjieguang/jenkins-dotnetcore .
+#sudo docker build -t wangjieguang/jenkins-dotnetcore .
 
 #sudo docker run -d -p 8000:8080 --name jenkins -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker -v /home/ubuntu/wjg/dockerstore/jenkins/data:/var/jenkins_home wangjieguang/jenkins-dotnetcore
