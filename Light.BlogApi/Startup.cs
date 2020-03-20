@@ -53,10 +53,11 @@ namespace Light.BlogApi
             services.AddDbContext<LightLogContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("LightLogConnectionMySql")));
 
-            services.AddScoped<IUnitOfWork<LightBlogContext>, UnitOfWork<LightBlogContext>>();
-            services.AddScoped<IUnitOfWork<LightLogContext>, UnitOfWork<LightLogContext>>();
-
-            services.RegisterAllService();
+            #region RegisterAllService 泛型服务和普通服务都不需要手动注册了
+            //services.AddScoped<IUnitOfWork<LightBlogContext>, UnitOfWork<LightBlogContext>>();
+            //services.AddScoped<IUnitOfWork<LightLogContext>, UnitOfWork<LightLogContext>>();
+            #endregion
+            services.RegisterAllService("Light.EFRespository");
             services.AddSwaggerGen(m =>
             {
                 m.SwaggerDoc("v1", new OpenApiInfo

@@ -105,10 +105,13 @@ namespace Light.AuthorityApi
             //    options.UseSqlServer(Configuration.GetConnectionString("LightLogConnection")));
             //services.AddDbContext<LightAuthorityContext>(options =>
             //    options.UseSqlServer(Configuration.GetConnectionString("LightAuthorityConnection")));
-            services.AddScoped<IUnitOfWork<LightLogContext>, UnitOfWork<LightLogContext>>();
-            services.AddScoped<IUnitOfWork<LightAuthorityContext>, UnitOfWork<LightAuthorityContext>>();
+
+            #region RegisterAllService 泛型服务和普通服务都不需要手动注册了
+            //services.AddScoped<IUnitOfWork<LightLogContext>, UnitOfWork<LightLogContext>>();
+            //services.AddScoped<IUnitOfWork<LightAuthorityContext>, UnitOfWork<LightAuthorityContext>>();
             //services.AddScoped(typeof(IAuthorityService), typeof(AuthorityService));
-            services.RegisterAllService("Light.Service");
+            #endregion
+            services.RegisterAllService("Light.Service", "Light.EFRespository");
             services.AddSwaggerGen(m =>
             {
                 m.SwaggerDoc("v1", new OpenApiInfo
