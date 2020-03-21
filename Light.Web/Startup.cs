@@ -41,7 +41,7 @@ namespace Light.Web
                 {
                     options.SignInScheme = "Cookies";
 
-                    options.Authority = "http://10.102.40.72:4999";
+                    options.Authority = "http://10.154.5.185:4999";
                     options.RequireHttpsMetadata = false;
 
                     options.ClientId = "mvc";
