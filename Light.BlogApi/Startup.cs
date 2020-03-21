@@ -20,6 +20,7 @@ using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using Light.Common;
 using Microsoft.OpenApi.Models;
+using Microsoft.IdentityModel.Logging;
 
 namespace Light.BlogApi
 {
@@ -48,6 +49,7 @@ namespace Light.BlogApi
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            IdentityModelEventSource.ShowPII = true;
             services.AddDbContext<LightBlogContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("LightBlogConnectionMySql")));
             services.AddDbContext<LightLogContext>(options =>
