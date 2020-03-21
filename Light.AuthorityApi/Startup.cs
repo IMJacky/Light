@@ -24,6 +24,7 @@ using AutoMapper;
 using Light.Model;
 using Newtonsoft.Json;
 using Microsoft.OpenApi.Models;
+using Microsoft.IdentityModel.Logging;
 
 namespace Light.AuthorityApi
 {
@@ -95,7 +96,7 @@ namespace Light.AuthorityApi
             //    return new LightContext(builder.Options, isDeleted);
             //});
             #endregion
-
+            IdentityModelEventSource.ShowPII = true;
             // Add DbContext
             services.AddDbContext<LightLogContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("LightLogConnectionMySql")));
