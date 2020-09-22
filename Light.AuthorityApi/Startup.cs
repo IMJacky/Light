@@ -164,7 +164,7 @@ namespace Light.AuthorityApi
             services.AddAuthentication("Bearer")
             .AddIdentityServerAuthentication("Bearer", options =>
              {
-                 options.Authority = "http://10.102.40.72:4999";
+                 options.Authority = "http://10.181.24.30:4999";
                  options.RequireHttpsMetadata = false;
                  options.ApiName = "AuthApi";
              });

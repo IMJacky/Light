@@ -6,7 +6,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "10.102.40.72",
+          "Host": "10.181.24.30",
           "Port": 4999
         }
       ],
@@ -19,7 +19,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "10.102.40.72",
+          "Host": "10.181.24.30",
           "Port": 5001
         }
       ],
@@ -36,7 +36,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "10.102.40.72",
+          "Host": "10.181.24.30",
           "Port": 5002
         }
       ],

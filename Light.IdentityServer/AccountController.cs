@@ -77,7 +77,7 @@ namespace Light.IdentityServer
         /// <param name="userLogin"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Login([FromForm]UserLoginRequest userLogin)
+        public async Task<IActionResult> Login([FromForm] UserLoginRequest userLogin)
         {
             ViewBag.ReturnUrl = userLogin.ReturnUrl;
             if (ModelState.IsValid)
@@ -92,7 +92,7 @@ namespace Light.IdentityServer
                         IsPersistent = true,
                         ExpiresUtc = DateTimeOffset.UtcNow.Add(TimeSpan.FromMinutes(1))
                     };
-                    await HttpContext.SignInAsync(userExist.Id.ToString(), userExist.UserName, props);
+                    await HttpContext.SignInAsync(userExist.Id.ToString(), ClaimsPrincipal.Current, props);
                     if (_interaction.IsValidReturnUrl(userLogin.ReturnUrl))
                     {
                         return Redirect(userLogin.ReturnUrl);
